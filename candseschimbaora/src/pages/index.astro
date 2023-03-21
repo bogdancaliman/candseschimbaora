@@ -1,0 +1,248 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+
+const d = new Date();
+
+function getLastSundayInMonth(year, month) {
+  //calculate the Sunday day for march/october
+  for (let i = 0; i < 7; i++)
+    if (new Date(year, month, 31 - i).getDay() === 0) return 31 - i;
+}
+
+const lunaMartieOctombrie =
+  d.getMonth() < 2 ||
+  (d.getMonth() === 2 &&
+    d.getDate() <= getLastSundayInMonth(d.getFullYear(), 2))
+    ? "martie"
+    : "octombrie";
+const ultimaDuminica =
+  lunaMartieOctombrie === "martie"
+    ? getLastSundayInMonth(d.getFullYear(), 2)
+    : getLastSundayInMonth(d.getFullYear(), 9);
+const ora1 = lunaMartieOctombrie === "martie" ? 3 : 4;
+const ora2 = lunaMartieOctombrie === "martie" ? 4 : 3;
+---
+
+<!-- - rephrase text with ChatGPT
+- font inter
+- SEO - metatags discord, links
+- vercel, https://pagespeed.web.dev/ - Google
+-  --><!-- style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap" -->
+<Layout title="Welcome to Astro.">
+  <main>
+    <div class="box-flex">
+      <p style="border-style: solid; border-color: aqua;">reclama</p>
+      <div
+        style="display: flex; flex-direction:column; align-items:center; text-align: center;"
+      >
+        <h1 style="border-style: solid; border-color: red; ">
+          <span class="text-gradient"
+            >{ultimaDuminica - 1} {lunaMartieOctombrie}</span
+          > spre <span class="text-gradient"
+            >{ultimaDuminica} {lunaMartieOctombrie}</span
+          >
+          <br />
+          ora <span class="text-gradient">{ora1}:00</span> devine ora <span
+            class="text-gradient">{ora2}:00</span
+          >
+        </h1>
+      </div>
+      <p style="border-style: solid; border-color: aqua;">reclama</p>
+    </div>
+
+    <div
+      style="display: flex; flex-direction:column; align-items:center; gap:10px; padding:10px"
+    >
+      <div class="box">
+        <h2>De ce se trece la ora de vară și în 2023? <span>&rarr;</span></h2>
+        <p>
+          În 2021, UE a pus problema aplicării permanente a orei de vară sau a
+          orei standard. Cu toate acestea, discuția rămâne deocamdată
+          nerezolvată.
+        </p>
+        <p>
+          Cum a apărut propunerea de a abandona schimbarea orei? Ca răspuns la
+          inițiativele cetățenești, în februarie 2018, Parlamentul a cerut
+          Comisiei să evalueze directiva privind schimbările sezoniere ale orei
+          și să facă propuneri de modificare, dacă este necesar.
+        </p>
+        <p>
+          În urma acestei evaluări, care a primit 4,6 milioane de răspunsuri,
+          dintre care 84% au fost în favoarea renunțării la schimbările de oră,
+          Comisia a făcut propunerea.
+        </p>
+      </div>
+
+      <div class="box">
+        <h2>De ce se schimbă ora? <span>&rarr;</span></h2>
+        <p>
+          Ideea de ora de vară a apărut pentru prima dată în mintea savantului
+          Benjamin Franklin, în anul 1784. El a scris un eseu intitulat "Un
+          proiect economic", în care a propus câteva idei pentru economisirea
+          uleiului folosit în iluminarea lămpilor, conform Observatorului
+          Astronomic.
+        </p>
+        <p>
+          Una dintre metodele sale a constat în introducerea unei perioade de
+          timp pe timpul verii. În timp ce se afla la Paris, la vârsta de 78 de
+          ani, Franklin a studiat modul în care lămpile cu ulei produc lumină și
+          cât de eficiente sunt acestea. Într-o dimineață de vară, el s-a trezit
+          la ora 6:00 dimineața și a fost uimit de cât de multă lumină pătrundea
+          în cameră. Inițial, a crezut că sunt lămpile cu ulei instalate pe
+          străzile din Paris, dar apoi și-a dat seama că soarele tocmai răsărise
+          pe orizont.
+        </p>
+        <p>
+          Idea lui Franklin a fost preluată de către William Willett, un
+          constructor britanic. El a fost, de asemenea, uimit când într-o
+          dimineață de vară, în jurul orei 6, chiar dacă era lumină afară, toate
+          obloanele caselor erau închise. Într-un pamflet din 1907, el a propus
+          adăugarea a 20 de minute în fiecare duminică din aprilie și scăderea
+          acestor minute în duminicile lunii septembrie. În 1908, a fost
+          încercată introducerea acestei reguli în Marea Britanie, dar a fost
+          întâmpinată cu reacții negative.
+        </p>
+      </div>
+      <div class="box">
+        <h2>Cine a introdus ora de vară? <span>&rarr;</span></h2>
+        <p>
+          Germanii au fost primii care au introdus ora de vară în 1916, între 30
+          aprilie și 1 octombrie. Britanicii au urmat această idee în același
+          an, stabilind perioada între 21 mai și 16 octombrie. Alte țări care au
+          adoptat ora de vară includ Belgia, Danemarca, Franța, Italia,
+          Luxemburg, Olanda, Norvegia, Portugalia, Suedia, Turcia și Tasmania.
+        </p>
+        <p>
+          Statele Unite au introdus ora de vară în 19 martie 1918, dar aceasta a
+          fost folosită doar până în 1919, din cauza opoziției fermierilor. În
+          Statele Unite, fiecare stat avea propriile reguli privind introducerea
+          orei de vară, creând astfel o mare confuzie. Această situație a
+          continuat până în 1966.
+        </p>
+        <p>
+          În prezent, 70 de țări utilizează ora de vară, dar aceasta nu este
+          folosită în țările situate la Ecuator și la tropicul Capricornului.
+          Două țări importante, Japonia și China, nu utilizează ora de vară.
+        </p>
+        <p>
+          În 1980, Uniunea Europeană a unificat trecerea la ora de vară pentru
+          prima dată, pentru a asigura o abordare unitară în ceea ce privește
+          această măsură în cadrul pieței unice.
+        </p>
+      </div>
+      <div class="box">
+        <h2>De când trece România la ora de vară? <span>&rarr;</span></h2>
+        <p>
+          În România, ora de vară a fost introdusă pentru prima oară în anul
+          1932, fiind valabilă între 22 mai și 2 octombrie. Între anii 1933 și
+          1940, s-a păstrat această practică, ora de vară fiind introdusă în
+          prima duminică din luna aprilie și eliminată în prima duminică a lunii
+          octombrie.
+        </p>
+        <p>
+          În perioada 1941-1979, România nu a mai folosit ora de vară.
+          Reintroducerea orei de vară a avut loc în anul 1979.
+        </p>
+        <p>
+          În anul 1979, România a semnat Convenția fusurilor orare, iar în anul
+          1997, a intrat în vigoare Ordonanța nr. 20/1997 privind stabilirea
+          orarului de vară și a orei oficiale de vară pe teritoriul României.
+          Conform articolului (1) din această ordonanță, în cadrul orarului de
+          vară se stabilește ora oficială de vară, decalată cu o oră în avans
+          față de ora Europei Orientale, aplicabilă din ultima duminică a lunii
+          martie, ora 3.00, care devine ora 4.00, până la ultima duminică a
+          lunii octombrie, ora 4.00, care devine ora 3.00.
+        </p>
+        <p>
+          Într-adevăr, până în 1996, în majoritatea țărilor, inclusiv în
+          România, ora de vară era introdusă în ultima duminică a lunii martie
+          și se încheia în ultima duminică a lunii septembrie, cu mici excepții
+          în unele state care aveau date diferite de introducere sau renunțare
+          la ora de vară.
+        </p>
+        <p>
+          Da, această informație este corectă. Din 1997, România trece la ora de
+          vară în ultima duminică din luna martie și revine la ora standard în
+          ultima duminică din luna octombrie.
+        </p>
+        <p>
+          În 2023, ora de vară va fi valabilă în România începând cu data de 26
+          martie, când se va face schimbarea de oră, ceasul fiind dat cu o oră
+          înainte, și va dura până pe data de 29 octombrie 2023, când se va face
+          trecerea la ora de iarnă, ceasul fiind dat cu o oră înapoi.
+        </p>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1.5rem 8rem 1.5rem 8rem;
+    max-width: 1800px;
+  }
+  h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0;
+  }
+  h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    color: rgb(var(--accent));
+  }
+  p {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    color: #444;
+  }
+  .box-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-decoration: none;
+    line-height: 1.4;
+    padding: 1rem 1.3rem;
+    border-radius: 0.35rem;
+    color: #111;
+    /* background-color: white; */
+    opacity: 0.8;
+
+    /* border-color: blue; */
+    /* border-style: solid; */
+  }
+
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    /* background-image: linear-gradient(to bottom right,#ededed,#a0a0a0); */
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+  @media screen and (max-width: 768px) {
+    main {
+      margin: auto;
+      padding: 1.5rem;
+      max-width: 1800px;
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    .box-flex {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      gap: 4px;
+    }
+  }
+</style>
